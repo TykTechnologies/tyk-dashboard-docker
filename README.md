@@ -10,7 +10,7 @@ Quickstart
 
 2. Run Tyk Dashboard One-Off Setup:
 
-	`docker run -i --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_gateway:tyk_gateway -v /home/foo/custom.dashboard.conf:/opt/tyk-dashboard/tyk_analytics.conf tykio/tyk-dashboard-docker:v0.9.3 /bin/bash`
+	`docker run -i --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_gateway:tyk_gateway -v /home/foo/custom.dashboard.conf:/opt/tyk-dashboard/tyk_analytics.conf tykio/tyk-dashboard:v0.9.3 /bin/bash`
 
 3. run the setup command, add the relative users and exit:
 	
@@ -22,6 +22,6 @@ Quickstart
 
 5. Run the dashboard
 
-	`docker run -d --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_gateway:tyk_gateway -v /home/foo/custom.dashboard.conf:/opt/tyk-dashboard/tyk_analytics.conf tykio/tyk-dashboard-docker:v0.9.3`
+	`docker run -d --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_gateway:tyk_gateway -v /home/foo/custom.dashboard.conf:/opt/tyk-dashboard/tyk_analytics.conf tykio/tyk-dashboard:v0.9.3`
 
 Here we are assuming you are using an externalised mongo instance that is configured in your custom setup file, if you have mongo set up uing docker, you can just link it in using the `--link` option and configure tyk (and analytics) appropriately to use the containerised version.
