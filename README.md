@@ -18,7 +18,7 @@ Quickstart
 
 4. Kill the container and remove it
 	
-	docker stop tyk_dashboard
+	`docker stop tyk_dashboard`
 
 5. Run the dashboard
 
