@@ -26,7 +26,7 @@ Quickstart
 
 Here we are assuming you are using an externalised mongo instance that is configured in your custom setup file, if you have mongo set up uing docker, you can just link it in using the `--link` option and configure tyk (and analytics) appropriately to use the containerised version.
 
-Included with 0.9.4 are two nginx configuration files ot get the portal up and running.
+Included with 0.9.4 are two nginx configuration files ot get the portal up and running, you can download these from the branch aon github: https://github.com/lonelycode/tyk-dashboard-docker/tree/version/v0.9.4.
 
 An example run command with nginx and the portal would be to get the nginx docker container, replace the OrgId tag in the portal.conf file with the Organisation ID you grabbed earlier and then run:
 
