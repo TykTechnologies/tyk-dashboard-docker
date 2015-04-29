@@ -1,8 +1,12 @@
 FROM ubuntu
-RUN sudo apt-get update && apt-get install -y wget
+
+RUN sudo apt-get install -y wget
+RUN sudo apt-get install -y curl
+
 # AWFULL
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
+
 RUN sudo sudo apt-get install -y build-essential
 RUN sudo apt-get install -y python
 RUN sudo npm install -g aglio
