@@ -1,4 +1,4 @@
-FROM dockerfile/ubuntu
+FROM ubuntu
 # AWFULL
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
