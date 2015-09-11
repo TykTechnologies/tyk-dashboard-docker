@@ -12,9 +12,9 @@ RUN sudo apt-get install -y python
 RUN sudo npm install -g aglio
 
 
-RUN wget https://github.com/lonelycode/tyk/releases/download/v1.8.3/tyk-dashboard-amd64-v0.9.6.3.tar.gz
-RUN sudo tar -xvzf tyk-dashboard-amd64-v0.9.6.3.tar.gz -C /opt
-RUN sudo mv /opt/tyk-analytics-v0.9.6.3 /opt/tyk-dashboard
+RUN wget https://github.com/lonelycode/tyk/releases/download/v1.8.3.1/tyk-dashboard-amd64-v0.9.6.4.tar.gz
+RUN sudo tar -xvzf tyk-dashboard-amd64-v0.9.6.4.tar.gz -C /opt
+RUN sudo mv /opt/tyk-analytics-v0.9.6.4 /opt/tyk-dashboard
 COPY tyk_dash_local.conf /opt/tyk-dashboard/tyk_analytics.conf
 RUN cd /opt/tyk-dashboard
 
