@@ -1,4 +1,5 @@
 FROM ubuntu
+RUN sudo apt-get update
 
 RUN sudo apt-get install -y wget curl build-essential python
 
@@ -11,18 +12,19 @@ RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ trusty main" | s
 
 RUN echo "deb-src https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ trusty main" | sudo tee -a /etc/apt/sources.list.d/tyk_tyk-dashboard.list
 
-sudo apt-get update
+RUN sudo apt-get update
 
-sudo apt-get install -y tyk-dashboard
+RUN sudo apt-get install -y tyk-dashboard
 
-# AWFULL
+# Install Aglio (API Blueprint) - This is horrible
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
 RUN sudo npm install -g aglio
 
+COPY ./tyk_analytics.with_mongo_and_gateway.conf /opt/tyk-dashboard/tyk_analytics.conf
 VOLUME ["/opt/tyk-dashboard"]
 WORKDIR /opt/tyk-dashboard
 
-CMD ["./tyk-analytics --conf=/opt/tyk-dashboard/tyk_analytics.conf"]
+CMD ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
 
 EXPOSE 3000
