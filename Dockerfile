@@ -14,7 +14,7 @@ RUN echo "deb-src https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ trusty main"
 
 RUN apt-get update
 
-RUN apt-get install -y tyk-dashboard=1.2.0.0
+RUN apt-get install -y tyk-dashboard=1.3.0.12
 
 # Install Aglio (API Blueprint) - This is horrible
 RUN curl -sL https://deb.nodesource.com/setup | bash -
@@ -28,3 +28,4 @@ WORKDIR /opt/tyk-dashboard
 CMD ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
 
 EXPOSE 3000
+EXPOSE 5000
