@@ -14,7 +14,7 @@ RUN echo "deb-src https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ trusty main"
 
 RUN apt-get update
 
-RUN apt-get install -y tyk-dashboard=1.3.5
+RUN apt-get install -y tyk-dashboard=1.3.6
 
 # Install Aglio (API Blueprint) - This is horrible
 RUN curl -sL https://deb.nodesource.com/setup | bash -
