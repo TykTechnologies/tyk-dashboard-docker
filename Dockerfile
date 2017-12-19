@@ -1,31 +1,36 @@
-FROM ubuntu:14.04
-RUN apt-get update
+FROM debian:jessie-slim
 
-RUN apt-get install -y wget curl build-essential python
+ENV TYKVERSION 1.4.1
+ENV TYKLISTENPORT 3000
 
-RUN curl https://packagecloud.io/gpg.key | apt-key add -
-RUN apt-get update
+LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
 
-RUN apt-get install -y apt-transport-https
+RUN apt-get update \
+ && apt-get upgrade -y \
+ && apt-get install -y --no-install-recommends \
+            curl ca-certificates apt-transport-https \
+            build-essential \
+ && curl https://packagecloud.io/gpg.key | apt-key add - \
+ && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+ && apt-get install -y --no-install-recommends nodejs \
+ && npm config set user 0 && npm config set unsafe-perm true \
+ && npm install -g aglio \
+ && apt-get purge -y build-essential \
+ && apt-get autoremove -y \
+ && rm -rf /root/.npm && rm -rf /root/.node-gyp
 
-RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ trusty main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list
+RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
+ && apt-get update \
+ && apt-get install -y tyk-dashboard=$TYKVERSION \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN echo "deb-src https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ trusty main" | tee -a /etc/apt/sources.list.d/tyk_tyk-dashboard.list
-
-RUN apt-get update
-
-RUN apt-get install -y tyk-dashboard=1.4.1
-
-# Install Aglio (API Blueprint) - This is horrible
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g aglio
 
 COPY ./tyk_analytics.with_mongo_and_gateway.conf /opt/tyk-dashboard/tyk_analytics.conf
 VOLUME ["/opt/tyk-dashboard"]
 WORKDIR /opt/tyk-dashboard
 
-CMD ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
-
-EXPOSE 3000
+EXPOSE $TYKLISTENPORT
 EXPOSE 5000
+
+ENTRYPOINT ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
+
