@@ -16,7 +16,7 @@ Quickstart
 
 3. Run the dashboard
 
-	`docker run -d --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_mongo:mongo--link tyk_gateway:tyk_gateway tykio/tyk-dashboard`
+	`docker run -d --name tyk_dashboard -p 3000:3000 --link tyk_redis:redis --link tyk_mongo:mongo --link tyk_gateway:tyk_gateway tykio/tyk-dashboard`
 
 4. You should now be able to access your Dashboard at `http://dashboard.tyk.docker:3000/` (note for OSX users, replace 127.0.0.1 with whatever IP address your docker VM runs)
 
