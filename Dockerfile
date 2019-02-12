@@ -1,6 +1,6 @@
 FROM debian:jessie-slim
 
-ENV TYKVERSION 1.6.2
+ENV TYKVERSION 1.7.5
 ENV TYKLISTENPORT 3000
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
@@ -21,7 +21,7 @@ RUN apt-get update \
 
 RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
  && apt-get update \
- && apt-get install -y tyk-dashboard=$TYKVERSION \
+ && apt-get install --allow-unauthenticated -f --force-yes -y tyk-dashboard=$TYKVERSION \
  && rm -rf /var/lib/apt/lists/*
 
 
