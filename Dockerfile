@@ -18,7 +18,7 @@ RUN apt-get update \
  && apt-get autoremove -y \
  && rm -rf /root/.npm && rm -rf /root/.node-gyp
 
-RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
+RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard-unstable/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
  && apt-get update \
  && apt-get install --allow-unauthenticated -f --force-yes -y tyk-dashboard \
  && rm -rf /var/lib/apt/lists/*
