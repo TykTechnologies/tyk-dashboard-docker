@@ -10,7 +10,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
             curl ca-certificates apt-transport-https \
             build-essential \
- && curl https://packagecloud.io/gpg.key | apt-key add - \
+ && curl -L https://packagecloud.io/tyk/tyk-dashboard/gpgkey | apt-key add - \
  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get install -y --no-install-recommends nodejs \
  && npm config set user 0 && npm config set unsafe-perm true \
