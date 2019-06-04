@@ -1,6 +1,6 @@
 FROM debian:jessie-slim
 
-ENV TYKVERSION 1.8.0
+ENV TYKVERSION 1.8.1
 ENV TYKLISTENPORT 3000
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
@@ -26,6 +26,7 @@ RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | t
 
 
 COPY ./tyk_analytics.with_mongo_and_gateway.conf /opt/tyk-dashboard/tyk_analytics.conf
+RUN RANDOM_ADMIN_PASSWORD=$(env LC_CTYPE=C tr -dc "a-z0-9" < /dev/urandom | head -c 32) && sed -i "s/ADMIN_SECRET_PLACEHOLDER/$RANDOM_ADMIN_PASSWORD/g" /opt/tyk-dashboard/tyk_analytics.conf
 VOLUME ["/opt/tyk-dashboard"]
 WORKDIR /opt/tyk-dashboard
 
