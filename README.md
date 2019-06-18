@@ -25,7 +25,7 @@ Quickstart
 
 5. Enter your Dashboard License. Go to `http://dashboard.tyk.docker:3000/`. You will see a screen asking for a license, enter it in the section marked “**Already have a license?**” and click `Use this license`.
 
-6. Grab the bootstrap script from our [tyk-dashboard github repo](https://github.com/TykTechnologies/tyk-analytics) and run:
+6. Grab the bootstrap script from our [tyk-dashboard github repo](https://github.com/TykTechnologies/tyk-dashboard-docker) and run:
 
     ./bootstrap.sh dashboard.tyk.docker
 
