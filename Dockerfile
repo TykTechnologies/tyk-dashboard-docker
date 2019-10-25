@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:buster-slim
 
 ENV TYKVERSION 1.9.1
 ENV TYKLISTENPORT 3000
@@ -8,7 +8,7 @@ LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
-            curl ca-certificates apt-transport-https \
+            curl ca-certificates apt-transport-https gnupg npm \
             build-essential \
  && curl -L https://packagecloud.io/tyk/tyk-dashboard/gpgkey | apt-key add - \
  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
@@ -33,4 +33,3 @@ EXPOSE $TYKLISTENPORT
 EXPOSE 5000
 
 ENTRYPOINT ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
-
