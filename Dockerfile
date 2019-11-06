@@ -8,14 +8,13 @@ LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
-            curl ca-certificates apt-transport-https gnupg npm \
+            curl ca-certificates apt-transport-https gnupg \
             build-essential \
  && curl -L https://packagecloud.io/tyk/tyk-dashboard/gpgkey | apt-key add - \
- && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+ && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
  && apt-get install -y --no-install-recommends nodejs \
  && npm config set user 0 && npm config set unsafe-perm true \
- && npm install -g aglio \
- && apt-get purge -y build-essential \
+ && apt-get purge -y build-essential gnupg \
  && apt-get autoremove -y \
  && rm -rf /root/.npm && rm -rf /root/.node-gyp
 
