@@ -1,6 +1,6 @@
 FROM debian:jessie-slim
 
-ENV TYKVERSION 1.9.1
+ENV TYKVERSION 1.8.6~131.9b5eb1a
 ENV TYKLISTENPORT 3000
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
@@ -19,7 +19,7 @@ RUN apt-get update \
  && apt-get autoremove -y \
  && rm -rf /root/.npm && rm -rf /root/.node-gyp
 
-RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
+RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard-unstable/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
  && apt-get update \
  && apt-get install --allow-unauthenticated -f --force-yes -y tyk-dashboard=$TYKVERSION \
  && rm -rf /var/lib/apt/lists/*
