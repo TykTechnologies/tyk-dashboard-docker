@@ -11,12 +11,9 @@ RUN apt-get update \
             curl ca-certificates apt-transport-https gnupg \
             build-essential \
  && curl -L https://packagecloud.io/tyk/tyk-dashboard/gpgkey | apt-key add - \
- && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
- && apt-get install -y --no-install-recommends nodejs \
- && npm config set user 0 && npm config set unsafe-perm true \
  && apt-get purge -y build-essential gnupg \
  && apt-get autoremove -y \
- && rm -rf /root/.npm && rm -rf /root/.node-gyp
+ && rm -rf /root/.cache
 
 RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
  && apt-get update \
