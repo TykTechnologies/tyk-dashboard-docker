@@ -26,11 +26,13 @@ RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | t
 
 
 COPY ./tyk_analytics.with_mongo_and_gateway.conf /opt/tyk-dashboard/tyk_analytics.conf
+COPY ./entrypoint.sh /opt/tyk-dashboard/entrypoint.sh
 VOLUME ["/opt/tyk-dashboard"]
 WORKDIR /opt/tyk-dashboard
 
 EXPOSE $TYKLISTENPORT
 EXPOSE 5000
 
-ENTRYPOINT ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
+
+ENTRYPOINT ["./entrypoint.sh"]
 
