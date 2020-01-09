@@ -12,7 +12,7 @@ RUN apt-get update \
             build-essential \
  && curl -L https://packagecloud.io/tyk/tyk-dashboard/gpgkey | apt-key add - \
  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
- && apt-get install -y --no-install-recommends --allow-downgrades nodejs=8.16.2-1nodesource1 python-dev \
+ && apt-get install -y --no-install-recommends --allow-downgrades nodejs=8.17.0-1nodesource1 python-dev \
  && npm config set user 0 && npm config set unsafe-perm true \
  && npm install -g aglio \
  && apt-get purge -y build-essential gnupg python-dev \
