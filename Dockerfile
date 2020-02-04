@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ENV TYKVERSION 1.9.2
+ENV TYKVERSION 1.9.3
 ENV TYKLISTENPORT 3000
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
@@ -28,8 +28,5 @@ RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard/debian/ jessie main" | t
 COPY ./tyk_analytics.with_mongo_and_gateway.conf /opt/tyk-dashboard/tyk_analytics.conf
 VOLUME ["/opt/tyk-dashboard"]
 WORKDIR /opt/tyk-dashboard
-
-EXPOSE $TYKLISTENPORT
-EXPOSE 5000
 
 ENTRYPOINT ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
