@@ -1,7 +1,7 @@
 FROM debian:jessie-slim
 
 ENV TYKLISTENPORT 3000
-ENV TYKVERSION 1.8.0
+ENV TYKVERSION 1.9.4.1~162.3950932
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
 
