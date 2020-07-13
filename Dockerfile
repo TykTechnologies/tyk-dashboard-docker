@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ENV TYKVERSION 1.9.4.1~162.3950932
+ENV TYKVERSION 3.0.0
 ENV TYKLISTENPORT 3000
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
