@@ -9,9 +9,8 @@ RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
             curl ca-certificates apt-transport-https gnupg \
-            build-essential \
  && curl -L https://packagecloud.io/tyk/tyk-dashboard/gpgkey | apt-key add - \
- && apt-get purge -y build-essential gnupg \
+ && apt-get purge -y gnupg \
  && apt-get autoremove -y \
  && rm -rf /root/.cache
 
