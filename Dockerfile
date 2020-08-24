@@ -1,7 +1,7 @@
 FROM debian:jessie-slim
 
 ENV TYKLISTENPORT 3000
-ENV TYKVERSION 3.0.0~181.1e8fad2
+ENV TYKVERSION 3.0.1~106.990582d
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
 
@@ -9,15 +9,8 @@ RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
             curl ca-certificates apt-transport-https \
-            build-essential \
  && curl https://packagecloud.io/gpg.key | apt-key add - \
- && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
- && apt-get install -y --no-install-recommends nodejs \
- && npm config set user 0 && npm config set unsafe-perm true \
- && npm install -g aglio \
- && apt-get purge -y build-essential \
- && apt-get autoremove -y \
- && rm -rf /root/.npm && rm -rf /root/.node-gyp
+ && apt-get autoremove -y
 
 RUN echo "deb https://packagecloud.io/tyk/tyk-dashboard-unstable/debian/ jessie main" | tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list \
  && apt-get update \
