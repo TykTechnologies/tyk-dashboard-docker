@@ -1,7 +1,7 @@
 FROM debian:jessie-slim
 
 ENV TYKLISTENPORT 3000
-ENV TYKVERSION 3.1.0~219.36e3b23
+ENV TYKVERSION 3.0.2~223.0adc6b7
 
 LABEL Description="Tyk Dashboard docker image" Vendor="Tyk" Version=$TYKVERSION
 
@@ -26,4 +26,3 @@ EXPOSE $TYKLISTENPORT
 EXPOSE 5000
 
 ENTRYPOINT ["/opt/tyk-dashboard/tyk-analytics", "--conf=/opt/tyk-dashboard/tyk_analytics.conf"]
-
