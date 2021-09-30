@@ -1,5 +1,8 @@
-Official Tyk Dashboard Docker Build
-===================================
+We would like to deprecate this repo as the release automation builds official images from the repo itself.
+
+If you'd like this repo to keep going, please do describe your use case in an issue and we can work something out.
+
+# ~~Official~~ Tyk Dashboard Docker Build
 
 This container only contains the Tyk Dashboard, the Tyk Gateway is provided as a separate container and needs to be set up and running (with the Dashboard enabled) before it will work with this container.
 
@@ -8,13 +11,19 @@ The following ports are required to be open:
 For Redis: 6379
 For MongoDB: 27017
 
-Quickstart
-----------
+# Building a specific version of the dashboard
 
 1. Ensure you have set up the Redis, MongoDB and Tyk Gateway containers
 
 2. Set up the docker instance IP as the Dashboard hostname (in your `/etc/hosts` file or as a DNS):
+```
+% docker build --build-arg=TYKVERSION=3.2.1 -t tykdb:test . 
+```
 
+# Quickstart
+
+1. Ensure you have set up Redis, Mongo and Tyk Gateway containers
+2. Set up the docker instance IP as the dashboard hostname (in your /etc/hosts file or as a DNS):
     127.0.0.1 dashboard.tyk.docker
 
 3. Run the Dashboard
