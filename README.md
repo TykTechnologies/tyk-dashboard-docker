@@ -13,9 +13,8 @@ For MongoDB: 27017
 
 # Building a specific version of the dashboard
 
-1. Ensure you have set up the Redis, MongoDB and Tyk Gateway containers
+Assuming you want to build an image called `tykdb`, tagged `test` with version 3.2.1 of the dashboard:
 
-2. Set up the docker instance IP as the Dashboard hostname (in your `/etc/hosts` file or as a DNS):
 ```
 % docker build --build-arg=TYKVERSION=3.2.1 -t tykdb:test . 
 ```
